@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "308358220166",
+    "project_id": "grievify",
+    "storage_bucket": "grievify.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308358220166:android:6a7f7cadfca1b8f939c407",
+        "android_client_info": {
+          "package_name": "com.example.grievify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308358220166-d0lgnavhbjhdap3fqceb3024d25po8hu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.grievify",
+            "certificate_hash": "0806cae3f6b59af31c681936db2d33c8587c2bd2"
+          }
+        },
+        {
+          "client_id": "308358220166-q5he0a22kqgd3dhs48tqteomjrmou1mo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEG2yLaH1OEtnijQaxqs7EdHTJWfES3uA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308358220166-q5he0a22kqgd3dhs48tqteomjrmou1mo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
