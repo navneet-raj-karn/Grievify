@@ -50,11 +50,12 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40sp"
                 android:inputType="text"
-                android:text="johndeed04@gmail.com"
+                android:hint="Enter your email"
                 android:textColor="@color/black"
                 app:boxBackgroundMode="filled"
                 app:boxStrokeWidth="2dp"
@@ -89,11 +90,12 @@
 
         </LinearLayout>
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40sp"
                 android:inputType="text"
-                android:text=".........................................."
+                android:hint="Enter your password"
                 android:textColor="@color/black"
                 app:boxBackgroundMode="filled"
                 app:boxStrokeWidth="2dp"
@@ -101,6 +103,7 @@
                 />
 
             <Button
+                android:id="@+id/loginButton"
                 style="@style/ThemeOverlay.Material3.Button.TonalButton"
                 android:backgroundTint="#00B59C"
                 android:layout_width="wrap_content"
