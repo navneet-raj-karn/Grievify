@@ -1,7 +1,8 @@
 package com.example.grievify.data
 
 
-data class TicketData(val category: String? = null,
+data class TicketData(val title:String?=null,
+                      val category: String? = null,
                       val description: String? = null,
                       val docsList: ArrayList<String>?=null,
                       val feedback: String? = null,
