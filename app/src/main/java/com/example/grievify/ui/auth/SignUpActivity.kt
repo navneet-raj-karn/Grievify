@@ -1,4 +1,4 @@
-package com.example.grievify
+package com.example.grievify.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

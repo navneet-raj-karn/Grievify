@@ -12,11 +12,11 @@
         android:theme="@style/Theme.Grievify"
         tools:targetApi="31">
         <activity
-            android:name=".SignUpActivity"
+            android:name=".ui.auth.SignUpActivity"
             android:exported="false"
-            android:parentActivityName=".LoginActivity"/>
+            android:parentActivityName=".ui.auth.LoginActivity"/>
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.auth.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

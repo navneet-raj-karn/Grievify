@@ -1,9 +1,10 @@
-package com.example.grievify
+package com.example.grievify.ui.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.grievify.MainActivity
 import com.example.grievify.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -19,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(view)
 
         loginBinding.register.setOnClickListener {
-            val intent= Intent(this@LoginActivity,SignUpActivity::class.java)
+            val intent= Intent(this@LoginActivity, SignUpActivity::class.java)
             startActivity(intent)
         }
 
@@ -40,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
                         "Login is successful",
                         Toast.LENGTH_SHORT
                     ).show()
-                    val intent=Intent(this@LoginActivity,MainActivity::class.java)
+                    val intent=Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
 
                 } else {
