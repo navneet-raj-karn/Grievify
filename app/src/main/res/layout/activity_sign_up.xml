@@ -48,11 +48,42 @@
                     android:textSize="14dp" />
             </LinearLayout>
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40sp"
                 android:inputType="text"
-                android:text="John Deed                       "
+                android:hint="Enter your Name"
+                android:textColor="@color/black"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeWidth="2dp"
+
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/email_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:text="Scholar Id"
+                    android:textColor="#878484"
+                    android:textSize="14dp" />
+            </LinearLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/scholarId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40sp"
+                android:inputType="text"
+                android:hint="Enter your Scholar Id"
                 android:textColor="@color/black"
                 app:boxBackgroundMode="filled"
                 app:boxStrokeWidth="2dp"
@@ -84,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40sp"
                 android:inputType="text"
-                android:text="johndeed04@gmail.com"
+                android:hint="Enter your email"
                 android:textColor="@color/black"
                 app:boxBackgroundMode="filled"
                 app:boxStrokeWidth="2dp"
@@ -124,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40sp"
                 android:inputType="text"
-                android:text=".........................................."
+                android:hint="Enter your password"
                 android:textColor="@color/black"
                 app:boxBackgroundMode="filled"
                 app:boxStrokeWidth="2dp"
