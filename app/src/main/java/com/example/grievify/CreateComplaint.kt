@@ -45,6 +45,7 @@ class CreateComplaint : AppCompatActivity() {
     private lateinit var title:TextInputEditText
     private lateinit var description: TextInputEditText
     private lateinit var complain: ExtendedFloatingActionButton
+    private lateinit var userName:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_complaint)
@@ -56,6 +57,18 @@ class CreateComplaint : AppCompatActivity() {
         populateDropDown()
         val user = Firebase.auth.currentUser
         userUID = user?.uid
+        val databaseUser =
+            FirebaseDatabase.getInstance()
+                .getReference("Users")
+        databaseUser.child(userUID.toString()).get().addOnSuccessListener { snapshot ->
+
+            if (snapshot.exists()) {
+                userName= snapshot.child("name").value.toString()
+
+            }
+        }.addOnFailureListener {
+            TODO("Not yet implemented")
+        }
         complain = findViewById(R.id.fab)
         complain.setOnClickListener {if (checkInternet()) {
             //setProgressBar()
@@ -117,7 +130,6 @@ class CreateComplaint : AppCompatActivity() {
             binding.sellMainScrollView.visibility=View.GONE
 //              binding.successAnimationView.visibility=View.VISIBLE
             binding.fab.visibility=View.INVISIBLE
-            supportActionBar?.hide()
 //              binding.successAnimationView.playAnimation()
             Handler(Looper.getMainLooper()).postDelayed({
 
@@ -181,7 +193,7 @@ class CreateComplaint : AppCompatActivity() {
                 null,
                 "Assigned",
                 ticketID,
-                userUID, username
+                userUID, userName
             )
         } else {
             return null

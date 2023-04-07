@@ -81,7 +81,6 @@
                     android:id="@+id/textFieldDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
                     />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -116,9 +115,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            android:backgroundTint="#153865"
+            android:backgroundTint="@color/colourAccent"
             android:text="Report"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             app:icon="@drawable/baseline_add_24"
             />
 
