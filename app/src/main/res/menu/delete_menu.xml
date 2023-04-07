@@ -6,6 +6,7 @@
         android:id="@+id/signOut"
         android:title="Sign Out" />
     <item
+        android:id="@+id/proflie"
         android:title="Profile"
         app:showAsAction="always" />
 </menu>
