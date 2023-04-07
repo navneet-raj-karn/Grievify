@@ -20,8 +20,13 @@ class MainActivity : AppCompatActivity() {
         binding.register.setOnClickListener {
             Toast.makeText(applicationContext,"clicked",Toast.LENGTH_SHORT).show()
         }
+
         binding.list.setOnClickListener {
             Toast.makeText(applicationContext,"clicked",Toast.LENGTH_SHORT).show()
+        }
+        binding.complain.setOnClickListener {
+            val i = Intent(this,CreateComplaint::class.java)
+            startActivity(i)
         }
     }
 
