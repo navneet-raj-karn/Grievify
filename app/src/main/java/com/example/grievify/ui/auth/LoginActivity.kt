@@ -12,13 +12,19 @@ class LoginActivity : AppCompatActivity() {
 
 
     lateinit var loginBinding:ActivityLoginBinding
-    val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loginBinding= ActivityLoginBinding.inflate(layoutInflater)
         val view=loginBinding.root
         setContentView(view)
-
+        auth = FirebaseAuth.getInstance()
+        val user=auth.currentUser
+        if(user!=null){
+            val intent=Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         loginBinding.register.setOnClickListener {
             val intent= Intent(this@LoginActivity, SignUpActivity::class.java)
             startActivity(intent)
@@ -27,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
         loginBinding.loginButton.setOnClickListener {
             val userEmail=loginBinding.email.text.toString()
             val userPassword=loginBinding.password.text.toString()
+
             logIn(userEmail, userPassword )
         }
     }
@@ -57,11 +64,6 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val user=auth.currentUser
-        if(user!=null){
-            val intent=Intent(this@LoginActivity, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+
     }
 }
