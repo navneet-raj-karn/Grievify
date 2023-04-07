@@ -1,8 +1,8 @@
-# GrievifyAdmin - Android App
+# Grievify - Android App
 
 ## About
 
-Grievify-Grievances Management system for NIT,Silchar
+Grievify-Grievances Management system for NIT,Silchar.
 This app lets you register grievances for quick resolutions and timely update.
 
 ## Features
