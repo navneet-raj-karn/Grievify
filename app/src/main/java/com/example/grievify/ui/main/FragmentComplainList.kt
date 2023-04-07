@@ -57,6 +57,8 @@ class FragmentComplainList : Fragment() {
                 binding.recyclerView.layoutManager= LinearLayoutManager(context)
                 binding.recyclerView.adapter=itemsAdapter
             }
+            binding.animationView.cancelAnimation()
+            binding.animationView.visibility=View.GONE
         }.addOnFailureListener {
             Toast.makeText(context, "Please try again!", Toast.LENGTH_SHORT).show()
 
