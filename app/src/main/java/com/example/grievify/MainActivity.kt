@@ -20,21 +20,6 @@ class MainActivity : AppCompatActivity() {
         
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val chatBotActivate: ExtendedFloatingActionButton = findViewById(R.id.sell_button)
-        chatBotActivate.setOnClickListener {
-            startActivity(Intent(this, ChatBot::class.java))
-        }
-        binding.register.setOnClickListener {
-            Toast.makeText(applicationContext,"clicked",Toast.LENGTH_SHORT).show()
-        }
-
-        binding.list.setOnClickListener {
-            Toast.makeText(applicationContext,"clicked",Toast.LENGTH_SHORT).show()
-        }
-        binding.complain.setOnClickListener {
-            val i = Intent(this,CreateComplaint::class.java)
-            startActivity(i)
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
