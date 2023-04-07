@@ -4,54 +4,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
     tools:context=".ui.main.HomeFragment">
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/sell_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="@color/white"
-        android:layout_marginEnd="15dp"
-        app:icon="@drawable/img"
-        />
-    <LinearLayout
-        android:layout_centerInParent="true"
-        android:orientation="horizontal"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/register"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_launcher_background" />
-
-        <ImageButton
-            android:id="@+id/list"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_launcher_background" />
-
-    </LinearLayout>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/complain"
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:backgroundTint="@color/colourAccent"
+            android:layout_height="wrap_content">
 
-            app:icon="@drawable/baseline_add_24"
-            />
+            <Button
+                android:id="@+id/register"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:text="Register\ncomplaint"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/button_shape_square"
+                android:textSize="18sp"
+                 />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <Button
+                android:id="@+id/list"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:text="My\ncomplaints"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/button_shape_square"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/sell_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="bottom|end"
+                android:backgroundTint="@color/white"
+                android:layout_marginEnd="15dp"
+                app:icon="@drawable/img"
+                />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </RelativeLayout>
 
 </FrameLayout>

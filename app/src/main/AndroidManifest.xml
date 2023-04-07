@@ -3,27 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/app_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Grievify"
         tools:targetApi="31">
         <activity
+            android:name=".DescriptionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChatBot"
+            android:label="Chat Bot"
             android:exported="false" />
         <activity
             android:name=".ui.auth.SignUpActivity"
             android:exported="false"
-            android:parentActivityName=".ui.auth.LoginActivity"/>
+            android:parentActivityName=".ui.auth.LoginActivity" />
         <activity
             android:name=".CreateComplaint"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="true">

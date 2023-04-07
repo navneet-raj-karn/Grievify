@@ -24,21 +24,26 @@ class HomeFragment : Fragment() {
         chatBotActivate.setOnClickListener {
             val intent = Intent(requireContext(),ChatBot::class.java)
             startActivity(intent)
-            activity?.finish()
         }
         binding.register.setOnClickListener {
-            //Toast.makeText(applicationContext,"clicked", Toast.LENGTH_SHORT).show()
+            val intent = Intent(requireContext(), CreateComplaint::class.java)
+            startActivity(intent)
         }
 
         binding.list.setOnClickListener {
+            fragmentload(FragmentComplainList())
             //Toast.makeText(applicationContext,"clicked", Toast.LENGTH_SHORT).show()
         }
-        binding.complain.setOnClickListener {
-            val intent = Intent(requireContext(), CreateComplaint::class.java)
-            startActivity(intent)
-            activity?.finish()
-        }
+
         return binding.root
+
+    }
+    private fun fragmentload(fragment : Fragment)
+    {
+
+        val fragmentTransaction = parentFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.mainFrameLayout, fragment)
+        fragmentTransaction.commit()
 
     }
 
