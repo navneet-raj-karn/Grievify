@@ -63,7 +63,7 @@ class CreateComplaint : AppCompatActivity() {
                 FirebaseDatabase.getInstance("https://grievify-default-rtdb.firebaseio.com/").reference
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Are you sure?")
-            builder.setMessage("Your item will be available publicly for buying")
+            builder.setMessage("Your complaint will be posted for reviewing")
             builder.setPositiveButton("Yes") { _, _ ->
                 setData()
             }
@@ -85,7 +85,12 @@ class CreateComplaint : AppCompatActivity() {
     }
 
     private fun setData() {
-        val ticketID = UUID.randomUUID().toString()
+
+        val dNow = Date()
+        val ft = SimpleDateFormat("yyMMddhhmmssMs")
+        val datetime: String = ft.format(dNow)
+
+        var ticketID = "ticket" + datetime
 //        setProgressBar()
         val dataObject = getData(ticketID)
         if (dataObject == null) {
@@ -136,7 +141,19 @@ class CreateComplaint : AppCompatActivity() {
         } else {
             binding.inputName.error = null
         }
-        val category =  categoryDropDown.text.toString()
+        var category =  categoryDropDown.text.toString()
+        if(category=="Student Welfare")
+        {
+            category="SW"
+        }
+        else if(category=="Academic")
+        {
+            category="Acad"
+        }
+        else
+        {
+            category="Admin"
+        }
         val priority =  priorityDropDown.text.toString()
 
 
@@ -159,9 +176,9 @@ class CreateComplaint : AppCompatActivity() {
                 category,
                 desc,
                 arrayList,
-                "feedbackEmpty",
+                null,
                 priority,
-                "resolvedMsg",
+                null,
                 "Assigned",
                 ticketID,
                 userUID, username
