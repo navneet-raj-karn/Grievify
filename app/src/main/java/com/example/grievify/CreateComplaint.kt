@@ -1,38 +1,36 @@
 package com.example.grievify
 
+import android.app.ProgressDialog
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.text.AutoText
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.Spinner
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.appcompat.app.AppCompatActivity
 import com.example.grievify.data.TicketData
 import com.example.grievify.databinding.ActivityCreateComplaintBinding
-import com.example.grievify.databinding.ActivityMainBinding
-import com.example.grievify.databinding.ComplaintBoxBinding
-import com.example.grievify.databinding.DropdownMenuCategoryItemBinding
 import com.example.grievify.utils.CheckInternet
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
-
+import com.google.firebase.storage.UploadTask
+import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class CreateComplaint : AppCompatActivity() {
     private lateinit var database: DatabaseReference
@@ -46,6 +44,7 @@ class CreateComplaint : AppCompatActivity() {
     private lateinit var description: TextInputEditText
     private lateinit var complain: ExtendedFloatingActionButton
     private lateinit var userName:String
+    private val arrayList = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_complaint)
@@ -84,9 +83,59 @@ class CreateComplaint : AppCompatActivity() {
             }
             builder.show()
         }
-    }
+
+
 
     }
+        findViewById<Button>(R.id.mediaUpload).setOnClickListener {
+//            val i=Intent()
+//           i.type="pdf/*"
+//            i.action=Intent.ACTION_GET_CONTENT
+//            //intent.setType("application/pdf");
+//            startActivityForResult(Intent.createChooser(i,"Select pdf"),5000)
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "application/pdf"
+            startActivityForResult(Intent.createChooser(intent, "Select PDF"), 5000)
+
+        }
+
+
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        println(resultCode)
+        println(requestCode)
+        if(resultCode== RESULT_OK && requestCode==5000)
+        {
+            val fileuri=data?.data
+            println(fileuri.toString())
+            upload(fileuri)
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+    private lateinit var uploadTask:UploadTask
+    private fun upload(fileuri: Uri?) {
+        val storageRef = Firebase.storage.reference
+        val dNow = Date()
+        val ft = SimpleDateFormat("yyMMddhhmmssMs")
+        val datetime: String = ft.format(dNow)
+        val filename= "file$datetime"
+        val pd = ProgressDialog(this);
+        pd.setMessage("Sit back and relax,we are processing");
+        pd.show()
+        pd.setCancelable(false)
+
+        uploadTask = storageRef.child("Complaint Docs/$filename").putFile(fileuri!!)
+        Handler(Looper.getMainLooper()).postDelayed({
+
+            onBackPressed()
+            finish()
+        }, 3000)
+
+    }
+
+
     private fun populateDropDown() {
         //Populate dropDown category list
         val categories = resources.getStringArray(R.array.Categories)
@@ -177,7 +226,7 @@ class CreateComplaint : AppCompatActivity() {
             binding.inputDesc.error = null
         }
         val username = Firebase.auth.currentUser?.displayName
-        val arrayList = ArrayList<String>()//Creating an empty arraylist
+        //Creating an empty arraylist
         arrayList.add("null")
         if (flag) {
             val currentDate = SimpleDateFormat("dd-MM-yyyy").format(Date())

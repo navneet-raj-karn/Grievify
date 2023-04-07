@@ -103,9 +103,14 @@
                     tools:ignore="LabelFor" />
             </com.google.android.material.textfield.TextInputLayout>
             <Button
+                android:id="@+id/mediaUpload"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload additional media files"/>
+                android:layout_margin="20dp"
+                android:enabled="false"
+                android:backgroundTint="@color/colourAccent"
+                android:text="Upload additional file"/>
         </LinearLayout>
 
     </ScrollView>
