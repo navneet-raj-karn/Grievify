@@ -215,7 +215,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginBottom="10dp"
-            android:text="Additional Links"
+            android:text="Additional Link"
             android:textSize="17sp"
             android:textStyle="bold" />
         <TextView
@@ -225,7 +225,7 @@
             android:textSize="18sp"
             android:textColor="@color/purple_700"
             android:textIsSelectable="true"
-
+            android:autoLink="web"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
