@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.grievify.R
 import com.example.grievify.adapters.ComplaintAdapter
 import com.example.grievify.data.TicketData
 import com.example.grievify.databinding.FragmentComplainListBinding
@@ -32,7 +33,14 @@ class FragmentComplainList : Fragment() {
         retriveDataFromDatabase()
         return binding.root
     }
+    private fun fragmentload(fragment : Fragment)
+    {
 
+        val fragmentTransaction = parentFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.mainFrameLayout, fragment)
+        fragmentTransaction.commit()
+
+    }
     private fun retriveDataFromDatabase() {
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myReference: DatabaseReference =database.reference.child("tickets")

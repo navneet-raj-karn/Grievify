@@ -3,6 +3,8 @@ package com.example.grievify
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -31,6 +33,32 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransactionn= fragmentManager.beginTransaction()
         fragmentTransactionn.replace(R.id.mainFrameLayout,fragment)
         fragmentTransactionn.commit()
+
+    }
+    private var doubleBackToExitPressedOnce = false
+
+    override fun onBackPressed() {
+        println("Hi there")
+        val currentFragment = supportFragmentManager.fragments.last()
+        println(currentFragment)
+        if(currentFragment.toString().contains("FragmentComplainList") || currentFragment.toString().contains("ProfileFragment") ) {
+
+            fragmentload(HomeFragment())
+        }
+        else {
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed()
+                return
+            }
+
+            this.doubleBackToExitPressedOnce = true
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
+
+            Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+        }
+
+
+
 
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
