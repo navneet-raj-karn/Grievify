@@ -9,8 +9,9 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.grievify.databinding.ActivityDescriptionBinding
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -33,11 +34,45 @@ class DescriptionActivity : AppCompatActivity() {
         }
         binding.button2.setOnClickListener {
            // showDialog(itemID)
+
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Are you sure?")
+            builder.setMessage("Your complaint will be deleted")
+            builder.setPositiveButton("Yes") { _, _ ->
+                deleteModel(itemID)
+                onBackPressed()
+            }
+            builder.setNegativeButton("No") { _, _ ->
+            }
+            builder.show()
         }
 
         binding.button3.setOnClickListener {
 
         }
+    }
+    private fun deleteModel(model: String) {
+        val databaseProd =
+            FirebaseDatabase.getInstance().getReference("tickets")
+        databaseProd.child(model).removeValue().addOnSuccessListener {
+            val ref = FirebaseDatabase.getInstance().getReference("tickets")
+            val query: Query = ref.orderByValue().equalTo(model)
+            query.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (snapshot in dataSnapshot.children) {
+                        snapshot.ref.removeValue()
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                }
+            })
+            Toast.makeText(applicationContext, "Item deleted from database", Toast.LENGTH_LONG).show()
+
+        }.addOnFailureListener {
+            Toast.makeText(applicationContext, "Error", Toast.LENGTH_LONG).show()
+        }
+
     }
 
 
@@ -52,6 +87,7 @@ class DescriptionActivity : AppCompatActivity() {
             println(dataSnapshot)
             if (dataSnapshot.exists()) {
                 binding.ticketID.text=dataSnapshot.child("ticketID").value.toString()
+                binding.title.text=dataSnapshot.child("title").value.toString()
                 binding.username.text = dataSnapshot.child("userName").value.toString()
                     .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
 
