@@ -21,6 +21,17 @@
             android:text="TicketID"
             android:textSize="20sp"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:text="Title"
+            android:textSize="20sp"
+             />
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -141,7 +152,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/feedbackLayout"
+            android:id="@+id/resolvedLayout"
             android:visibility="gone"
             android:orientation="vertical">
             <TextView
@@ -153,7 +164,7 @@
                 android:textSize="17sp"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/feedback"
+                android:id="@+id/resolved"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -180,7 +191,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:text="send message" />
+            android:text="Delete Complaint" />
 
         <Button
             android:id="@+id/button3"
@@ -188,24 +199,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:enabled="false"
-            android:text="Mark as in-progress" />
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:enabled="false"
-            android:text="Mark as resolved" />
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:enabled="false"
-            android:text="Report To Higher Authority" />
+            android:text="Give Feedback" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
