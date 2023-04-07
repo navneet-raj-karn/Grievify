@@ -48,7 +48,7 @@ class DescriptionActivity : AppCompatActivity() {
         }
 
         binding.button3.setOnClickListener {
-
+            showDialog(itemID)
         }
     }
     private fun deleteModel(model: String) {
@@ -139,27 +139,27 @@ class DescriptionActivity : AppCompatActivity() {
     }
     private fun showDialog(itemID:String) {
 
-//        val dialog = Dialog(this)
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-//        dialog.setContentView(R.layout.send_message)
-//        dialog.setCancelable(true)
-//        val lp = WindowManager.LayoutParams()
-//        lp.copyFrom(dialog.window!!.attributes)
-//        lp.width = WindowManager.LayoutParams.WRAP_CONTENT
-//        lp.height = WindowManager.LayoutParams.WRAP_CONTENT
-//        val etPost = dialog.findViewById<EditText>(R.id.et_post)
-//        dialog.findViewById<View>(R.id.bt_cancel)
-//            .setOnClickListener { dialog.dismiss() }
-//        dialog.findViewById<View>(R.id.btn_submit).setOnClickListener { _: View? ->
-//            val customCat = etPost.text.toString().trim { it <= ' ' }
-//            FirebaseDatabase.getInstance().reference.child("tickets").child(itemID).child("resolvedMsg")
-//                .setValue(customCat).addOnSuccessListener {
-//                    Toast.makeText(applicationContext,"Message Posted", Toast.LENGTH_SHORT).show()
-//                }
-//            dialog.dismiss()
-//        }
-//        dialog.show()
-//        dialog.window!!.attributes = lp
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.send_message)
+        dialog.setCancelable(true)
+        val lp = WindowManager.LayoutParams()
+        lp.copyFrom(dialog.window!!.attributes)
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT
+        val etPost = dialog.findViewById<EditText>(R.id.et_post)
+        dialog.findViewById<View>(R.id.bt_cancel)
+            .setOnClickListener { dialog.dismiss() }
+        dialog.findViewById<View>(R.id.btn_submit).setOnClickListener { _: View? ->
+            val customCat = etPost.text.toString().trim { it <= ' ' }
+            FirebaseDatabase.getInstance().reference.child("tickets").child(itemID).child("feedback")
+                .setValue(customCat).addOnSuccessListener {
+                    Toast.makeText(applicationContext,"Message Posted", Toast.LENGTH_SHORT).show()
+                }
+            dialog.dismiss()
+        }
+        dialog.show()
+        dialog.window!!.attributes = lp
 
     }
 
