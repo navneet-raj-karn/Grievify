@@ -20,10 +20,10 @@ The android app lets you:
 
 ## Screenshots
 
-[<img src="https://raw.githubusercontent.com/saikiaDeep/GrievifyAdmin/master/readme/Screenshot_2023-04-07-14-21-01-244_com.example.grievifyadmin.jpg" align="left"
+[<img src="https://raw.githubusercontent.com/navneet098/Grievify/main/readme/Screenshot_2023-04-07-14-26-35-378_com.example.grievify.jpg" align="left"
 width="200"
     hspace="10" vspace="10">](/readme/1.png)
-[<img src="https://raw.githubusercontent.com/saikiaDeep/GrievifyAdmin/master/readme/Screenshot_2023-04-07-14-21-24-219_com.example.grievifyadmin.jpg" align="center"
+[<img src="https://raw.githubusercontent.com/navneet098/Grievify/main/readme/Screenshot_2023-04-07-14-26-30-311_com.example.grievify.jpg" align="center"
 width="200"
     hspace="10" vspace="10">](/readme/2.png)
 [<img src="https://raw.githubusercontent.com/navneet098/Grievify/main/readme/Screenshot_2023-04-06-18-52-43-165_com.example.grievify.jpg" align="center"
