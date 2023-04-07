@@ -17,7 +17,15 @@
             android:name=".ChatBot"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.auth.SignUpActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.auth.LoginActivity"/>
+        <activity
+            android:name=".CreateComplaint"
+            android:exported="false"
+            />
+        <activity
+            android:name=".ui.auth.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +33,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
