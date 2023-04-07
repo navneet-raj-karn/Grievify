@@ -50,6 +50,7 @@ class LoginActivity : AppCompatActivity() {
                     ).show()
                     val intent=Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
 
                 } else {
                     // If sign in fails, display a message to the user.

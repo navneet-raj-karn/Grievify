@@ -47,7 +47,7 @@ class SignUpActivity : AppCompatActivity() {
                 reference.child(user).child("email").setValue(userEmail)
                 val intent= Intent(this@SignUpActivity, LoginActivity::class.java)
                 startActivity(intent)
-
+                finish()
 
 
 
