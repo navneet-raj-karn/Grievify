@@ -14,16 +14,18 @@
         android:theme="@style/Theme.Grievify"
         tools:targetApi="31">
         <activity
+            android:name=".DescriptionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChatBot"
             android:exported="false" />
         <activity
             android:name=".ui.auth.SignUpActivity"
             android:exported="false"
-            android:parentActivityName=".ui.auth.LoginActivity"/>
+            android:parentActivityName=".ui.auth.LoginActivity" />
         <activity
             android:name=".CreateComplaint"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="true">
