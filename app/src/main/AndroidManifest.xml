@@ -18,6 +18,7 @@
             android:exported="false" />
         <activity
             android:name=".ChatBot"
+            android:label="Chat Bot"
             android:exported="false" />
         <activity
             android:name=".ui.auth.SignUpActivity"
