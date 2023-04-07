@@ -30,7 +30,7 @@ class FragmentComplainList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentComplainListBinding.inflate(inflater, container, false)
-        retriveDataFromDatabase()
+        fetchData()
         return binding.root
     }
     private fun fragmentload(fragment : Fragment)
@@ -63,5 +63,41 @@ class FragmentComplainList : Fragment() {
             Toast.makeText(context, "Please try again!", Toast.LENGTH_SHORT).show()
 
         }
+    }
+    private fun fetchData() {
+        binding.recyclerView.adapter =
+            context?.let { it1 -> ComplaintAdapter(it1, itemList) }
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        val user=Firebase.auth.currentUser?.uid.toString()
+        val database = FirebaseDatabase.getInstance()
+        val myReference: DatabaseReference = database.reference.child("tickets")
+        myReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                binding.animationView.visibility=View.GONE
+                itemList.clear()
+                if (snapshot.exists()) {
+                    for (cartItemIDs in snapshot.children) {
+
+                        println(cartItemIDs.value.toString())
+                        val item = cartItemIDs.getValue(TicketData::class.java)
+                        if (item != null) {
+                            if(item.userID==user)
+                            {
+                                itemList.add(item)
+                            }
+
+                        }
+                        binding.recyclerView.adapter?.notifyDataSetChanged()
+                    }
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        }
+        )
     }
 }
